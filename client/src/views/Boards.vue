@@ -1,6 +1,6 @@
 <template>
   <div class="boards">
-    WELCOME TO THE BOARDS!!!
+    WELCOME TO THE BOARDS!!!  <button class="btn btn-danger">Log Out</button>
     <form @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required>
       <input type="text" placeholder="description" v-model="newBoard.description">
@@ -13,29 +13,33 @@
 </template>
 
 <script>
-  export default {
-    name: "boards",
-    mounted() {
-      this.$store.dispatch("getBoards");
-    },
-    data() {
-      return {
-        newBoard: {
-          title: "",
-          description: ""
-        }
-      };
-    },
-    computed: {
-      boards() {
-        return this.$store.state.boards;
+export default {
+  name: "boards",
+  mounted() {
+    this.$store.dispatch("getBoards");
+  },
+  data() {
+    return {
+      newBoard: {
+        title: "",
+        description: ""
       }
-    },
-    methods: {
-      addBoard() {
-        this.$store.dispatch("addBoard", this.newBoard);
-        this.newBoard = { title: "", description: "" };
-      }
+    };
+  },
+  computed: {
+    boards() {
+      return this.$store.state.boards;
     }
-  };
+  },
+  methods: {
+    addBoard() {
+      this.$store.dispatch("addBoard", this.newBoard);
+      this.newBoard = { title: "", description: "" };
+    },
+    logout() {
+      this.$store.dispatch("logout", this.logout);
+      this.logout = {};
+    }
+  }
+};
 </script>
