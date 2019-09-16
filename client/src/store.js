@@ -89,11 +89,28 @@ export default new Vuex.Store({
 
       }
 
-    }
+    },
     //#endregion
 
 
     //#region -- LISTS --
+    addList({ commit, dispatch }, listData) {
+      api.post('list', listData)
+        .then(serverList => {
+          dispatch('getLists')
+        })
+    },
+
+    async deleteList({ commit, dispatch }, payload) {
+      try {
+        let res = await api.delete(`/Lists/${payload}`)
+        dispatch('getList')
+        router.push({ name: 'boards/boardId' })
+      } catch (error) {
+        console.error(error)
+
+      }
+    },
 
 
 

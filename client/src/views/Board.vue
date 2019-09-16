@@ -2,7 +2,12 @@
   <div class="board">
     {{board.title}}
     <button @click="deleteBoard(boardId)" class="btn btn-danger">Delete</button>
-    <button type="submit">Create List</button>
+    <button
+      @click="createList"
+      type="submit"
+      data-toggle="modal"
+      data-target="#create-list-modal"
+    >Create List</button>
   </div>
 </template>
 
@@ -24,6 +29,9 @@ export default {
   methods: {
     deleteBoard() {
       this.$store.dispatch("deleteBoard", this.$route.params.boardId);
+    },
+    createList() {
+      this.$store.dispatch("createList", this.$route.params.boardId);
     }
   }
 };

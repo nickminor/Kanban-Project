@@ -1,12 +1,20 @@
 <template>
-  
+  <div class="list"></div>
 </template>
+
 
 <script>
 export default {
-  name: 'List'
-}
+  name: "list",
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {},
+  components: {}
+};
 </script>
+
 
 <style scoped>
 </style>

@@ -8,7 +8,11 @@
       <button type="submit">Create Board</button>
     </form>
     <div v-for="board in boards" :key="board._id">
-      <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
+      <router-link :to="{name: 'board', params: {boardId: board._id}}">
+        {{board.title}}
+        <br />
+        {{board.description}}
+      </router-link>
       <button @click="deleteBoard(board._id)" class="btn btn-danger">Delete</button>
     </div>
   </div>
