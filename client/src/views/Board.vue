@@ -1,5 +1,8 @@
 <template>
-  <div class="board">{{board.title}}</div>
+  <div class="board">{{board.title}}
+  <button class="btn btn-danger">Delete</button>
+  <button type="submit">Create List</button>
+  </div>
 </template>
 
 <script>
