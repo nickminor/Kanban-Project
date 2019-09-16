@@ -1,7 +1,8 @@
 <template>
-  <div class="board">{{board.title}}
-  <button class="btn btn-danger">Delete</button>
-  <button type="submit">Create List</button>
+  <div class="board">
+    {{board.title}}
+    <button @click="deleteBoard(boardId)" class="btn btn-danger">Delete</button>
+    <button type="submit">Create List</button>
   </div>
 </template>
 
@@ -18,6 +19,12 @@ export default {
       );
     }
   },
-  props: ["boardId"]
+  props: ["boardId"],
+
+  methods: {
+    deleteBoard() {
+      this.$store.dispatch("deleteBoard", this.$route.params.boardId);
+    }
+  }
 };
 </script>

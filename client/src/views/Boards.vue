@@ -1,14 +1,15 @@
 <template>
   <div class="boards">
-    WELCOME TO THE BOARDS!!!  <button class="btn btn-danger">Log Out</button>
+    WELCOME TO THE BOARDS!!!
+    <button @click="logout" class="btn btn-danger">Log Out</button>
     <form @submit.prevent="addBoard">
-      <input type="text" placeholder="title" v-model="newBoard.title" required>
-      <input type="text" placeholder="description" v-model="newBoard.description">
+      <input type="text" placeholder="title" v-model="newBoard.title" required />
+      <input type="text" placeholder="description" v-model="newBoard.description" />
       <button type="submit">Create Board</button>
     </form>
     <div v-for="board in boards" :key="board._id">
       <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
-      <button class="btn btn-danger">Delete</button>
+      <button @click="deleteBoard(board._id)" class="btn btn-danger">Delete</button>
     </div>
   </div>
 </template>
@@ -39,7 +40,10 @@ export default {
     },
     logout() {
       this.$store.dispatch("logout", this.logout);
-      this.logout = {};
+      this.logout = this.$router.push({ name: "login" });
+    },
+    deleteBoard(id) {
+      this.$store.dispatch("deleteBoard", id);
     }
   }
 };

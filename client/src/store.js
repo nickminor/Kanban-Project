@@ -27,6 +27,9 @@ export default new Vuex.Store({
     },
     setBoards(state, boards) {
       state.boards = boards
+    },
+    resetState(state, payload) {
+      state.user = payload
     }
   },
   actions: {
@@ -74,6 +77,18 @@ export default new Vuex.Store({
         .then(serverBoard => {
           dispatch('getBoards')
         })
+    },
+
+    async deleteBoard({ commit, dispatch }, payload) {
+      try {
+        let res = await api.delete(`/boards/${payload}`)
+        dispatch('getBoards')
+        router.push({ name: 'boards' })
+      } catch (error) {
+        console.error(error)
+
+      }
+
     }
     //#endregion
 
