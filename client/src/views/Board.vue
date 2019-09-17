@@ -17,6 +17,9 @@
 import CreateListModal from "../components/CreateListModal";
 export default {
   name: "board",
+  mounted() {
+    this.$store.dispatch("getBoards");
+  },
   computed: {
     board() {
       return (

@@ -11,7 +11,13 @@
             <form>
               <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" id="listTitle" placeholder="List Title" />
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="newList.title"
+                  id="listTitle"
+                  placeholder="List Title"
+                />
               </div>
               <button type="submit" @click="createList()" class="btn btn-primary">Submit</button>
             </form>
@@ -34,17 +40,11 @@ export default {
       newList: {}
     };
   },
-  computed: {
-    board() {
-      return this.$store.state.activeBoard;
-    }
-  },
+  computed: {},
   methods: {
     createList() {
-      this.newList.boardId = this.board._id;
-      this.$store
-        .dispatch("createList", this.newList)
-        .populate(boardId, authorId);
+      this.newList.boardId = this.$route.params.boardId;
+      this.$store.dispatch("createList", this.newList);
       this.newList = {};
     }
   },

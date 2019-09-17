@@ -42,6 +42,9 @@ export default new Vuex.Store({
     setLists(state, payload) {
       state.lists = payload
     },
+    setActiveBoard(state, payload) {
+      state.activeBoard = payload
+    }
 
   },
   actions: {
@@ -110,23 +113,26 @@ export default new Vuex.Store({
 
     async getLists({ commit, dispatch }, payload) {
       try {
-        let res = await api.get(`/boards/` + payload.listID + '/Lists')
+        let res = await api.get('/List')
         commit("setLists", res.data)
       } catch (error) {
         console.error(error)
       }
     },
 
-    createList({ commit, dispatch }, listData) {
-      api.post(`/List`, listData)
-        .then(serverList => {
-          dispatch('getLists')
-        })
+    async createList({ commit, dispatch }, listData) {
+      try {
+        let res = await api.post('/List', listData)
+        //.then(serverList => {
+        dispatch('getLists', listData)
+      } catch (error) {
+        console.error(error)
+      }
     },
 
     async deleteList({ commit, dispatch }, payload) {
       try {
-        let res = await api.delete(`/Lists/${payload}`)
+        let res = await api.delete(`/List/${payload}`)
         dispatch('getList')
         router.push({ name: 'boards/boardId' })
       } catch (error) {

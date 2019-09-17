@@ -17,6 +17,9 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    this.$store.dispatch("getLists");
+  },
   computed: {
     postList() {
       debugger;
