@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "list",
+  name: "lists",
   props: ["listProp"],
   data() {
     return {};
