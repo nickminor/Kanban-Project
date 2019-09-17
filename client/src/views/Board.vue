@@ -1,7 +1,10 @@
 <template>
+<div class="container-fluid"> 
+<div class="row">
+  <div class="col-12"> 
   <div class="board">
     {{board.title}}
-    <button @click="deleteBoard(boardId)" class="btn btn-danger">Delete</button>
+    <button id="delbtn" @click="deleteBoard(boardId)" class="btn btn-danger">Delete</button>
     <button
       @click="createList"
       type="submit"
@@ -9,6 +12,9 @@
       data-target="#create-list-modal"
     >Create List</button>
   </div>
+  </div> 
+  </div> 
+  </div> 
 </template>
 
 <script>

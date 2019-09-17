@@ -22,12 +22,24 @@
 
 <script>
 export default {
-  name: "component",
+  name: "Create-List-Modal",
   data() {
-    return {};
+    return {
+      newList: {}
+    };
   },
-  computed: {},
-  methods: {},
+  computed: {
+    user() {
+      return this.$store.state.activeUser;
+    }
+  },
+  methods: {
+    addList() {
+      this.newList.userId = this.user._id;
+      this.$store.dispatch("addList", this.newList);
+      this.newList = {};
+    }
+  },
   components: {}
 };
 </script>

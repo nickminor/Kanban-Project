@@ -19,7 +19,14 @@ export default new Vuex.Store({
   state: {
     user: {},
     boards: [],
-    activeBoard: {}
+    activeBoard: {},
+    lists: [],
+    activeList: {},
+    tasks: [],
+    activeTask: {},
+    comments: [],
+    activeComment: {},
+
   },
   mutations: {
     setUser(state, user) {
@@ -30,7 +37,11 @@ export default new Vuex.Store({
     },
     resetState(state, payload) {
       state.user = payload
-    }
+    },
+    setLists(state, payload) {
+      state.lists = payload
+    },
+
   },
   actions: {
     //#region -- AUTH STUFF --
@@ -94,6 +105,16 @@ export default new Vuex.Store({
 
 
     //#region -- LISTS --
+
+    async getlists({ commit, dispatch }, payload) {
+      try {
+        let res = await api.get(`/boards/` + payload.listID + '/lists')
+        commit("setLists", res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
     addList({ commit, dispatch }, listData) {
       api.post('list', listData)
         .then(serverList => {

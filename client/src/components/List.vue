@@ -1,16 +1,32 @@
 <template>
-  <div class="list"></div>
+<div class="list">
+  <h3>
+    {{listsProp.list}}
+<span> 
+  <button class="btn btn-danger" @click="deleteList">x</button>
+  </span>
+  </h3>
+    </div> 
 </template>
 
 
 <script>
 export default {
   name: "list",
+  props: ["listProp"],
   data() {
     return {};
   },
-  computed: {},
-  methods: {},
+  computed: {
+    postList() {
+      return this.$store.state.lists;
+    }
+  },
+  methods: {
+    deleteList() {
+      this.$store.dispatch("deleteList", this.listProp);
+    }
+  },
   components: {}
 };
 </script>

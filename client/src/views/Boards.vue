@@ -1,4 +1,7 @@
 <template>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12"> 
   <div class="boards">
     WELCOME TO THE BOARDS!!!
     <button @click="logout" class="btn btn-danger">Log Out</button>
@@ -7,13 +10,19 @@
       <input type="text" placeholder="description" v-model="newBoard.description" />
       <button type="submit">Create Board</button>
     </form>
+    <div class="col-12 m-5">
     <div v-for="board in boards" :key="board._id">
       <router-link :to="{name: 'board', params: {boardId: board._id}}">
         {{board.title}}
-        <br />
+        <br><br>
         {{board.description}}
       </router-link>
+      <br><br>
       <button @click="deleteBoard(board._id)" class="btn btn-danger">Delete</button>
+  </div>
+  </div>
+  </div>
+  </div>
     </div>
   </div>
 </template>
@@ -51,4 +60,4 @@ export default {
     }
   }
 };
-</script>
+</script> 

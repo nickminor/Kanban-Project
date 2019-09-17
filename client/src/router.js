@@ -3,11 +3,17 @@ import Router from 'vue-router'
 import Boards from './views/Boards.vue'
 import Board from './views/Board.vue'
 import Login from './views/Login.vue'
+import lists from './components/List.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    // {
+    //   path: '/lists/:listId',
+    //   name: 'list',
+    //   component: List
+    // },
     {
       path: '/',
       name: 'boards',
