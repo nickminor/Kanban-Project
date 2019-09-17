@@ -43,13 +43,11 @@ export default new Vuex.Store({
     setLists(state, payload) {
       state.lists = payload
     },
-<<<<<<< HEAD
-    setActiveBoard(state, payload) {
-      state.activeBoard = payload
-=======
-    setauthorId(state, authorId) {
-      state.user._id = authorId
->>>>>>> de984d42030f61c7b264ae79e8fd23dcb3a3440d
+    setActiveBoard(state, data) {
+      state.activeBoard = data
+    },
+    setActiveList(state, lists) {
+      state.lists = lists
     }
 
   },
@@ -93,6 +91,12 @@ export default new Vuex.Store({
           commit('setBoards', res.data)
         })
     },
+    getActiveBoard({ commit, dispatch }, payload) {
+      api.get('boards/' + payload)
+        .then(res => {
+          commit('setActiveBoard', res.data)
+        })
+    },
     addBoard({ commit, dispatch }, boardData) {
       api.post('boards', boardData)
         .then(serverBoard => {
@@ -117,9 +121,9 @@ export default new Vuex.Store({
 
     //#region -- LISTS --
 
-    async getLists({ commit, dispatch }, payload) {
+    async getListsByBoardId({ commit, dispatch }, payload) {
       try {
-        let res = await api.get('/List')
+        let res = await api.get(`/boards/${payload}/lists`)
         commit("setLists", res.data)
       } catch (error) {
         console.error(error)
@@ -130,7 +134,7 @@ export default new Vuex.Store({
       try {
         let res = await api.post('/List', listData)
         //.then(serverList => {
-        dispatch('getLists', listData)
+        dispatch('getListsByBoardId', listData.boardId)
       } catch (error) {
         console.error(error)
       }
@@ -146,6 +150,13 @@ export default new Vuex.Store({
 
       }
     },
+    async postList({ commit, dispatch }) {
+      try {
+        let res = await api.get()
+      } catch (error) {
+
+      }
+    }
 
 
 

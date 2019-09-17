@@ -11,6 +11,7 @@ export default class BoardsController {
       .use(Authorize.authenticated)
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:id/lists', this.getAllLists)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -24,6 +25,15 @@ export default class BoardsController {
   }
 
   async getAll(req, res, next) {
+    try {
+      //only gets boards by user who is logged in
+      let data = await _boardService.find({ authorId: req.session.uid })
+      return res.send(data)
+    }
+    catch (err) { next(err) }
+  }
+
+  async getAllLists(req, res, next) {
     try {
       //only gets boards by user who is logged in
       let data = await _boardService.find({ authorId: req.session.uid })

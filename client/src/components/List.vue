@@ -1,7 +1,7 @@
 <template>
-  <div class="list">
+  <div class="lists">
     <h3>
-      {{lists.list}}
+      {{listProp.title}}
       <span>
         <button class="btn btn-danger" @click="deleteList">x</button>
       </span>
@@ -15,20 +15,24 @@ export default {
   name: "lists",
   props: ["listProp"],
   data() {
-    return {};
+    return {
+      newList: {
+        title: ""
+      }
+    };
   },
-  mounted() {
-    this.$store.dispatch("getLists");
-  },
+  mounted() {},
   computed: {
     postList() {
-      debugger;
       return this.$store.state.lists;
     }
   },
   methods: {
     deleteList() {
-      this.$store.dispatch("deleteList", this.listProp);
+      this.$store.dispatch("deleteList", this.listsProp);
+    },
+    viewList() {
+      this.$router.push({ name: "List", params: { listId: listsProp._id } });
     }
   },
   components: {}
