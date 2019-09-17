@@ -8,7 +8,13 @@
             <h4 class="modal-title">Create a List</h4>
           </div>
           <div class="modal-body">
-            <p>Some text in the modal.</p>
+            <form>
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="listTitle" placeholder="List Title" />
+              </div>
+              <button type="submit" @click="createList()" class="btn btn-primary">Submit</button>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -34,9 +40,11 @@ export default {
     }
   },
   methods: {
-    addList() {
+    createList() {
       this.newList.boardId = this.board._id;
-      this.$store.dispatch("addList", this.newList);
+      this.$store
+        .dispatch("createList", this.newList)
+        .populate(boardId, authorId);
       this.newList = {};
     }
   },
