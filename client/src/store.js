@@ -18,6 +18,7 @@ let api = Axios.create({
 
 export default new Vuex.Store({
   state: {
+    authorId: {},
     user: {},
     boards: [],
     activeBoard: {},
@@ -42,6 +43,9 @@ export default new Vuex.Store({
     setLists(state, payload) {
       state.lists = payload
     },
+    setauthorId(state, user) {
+      state.user._id = user
+    }
 
   },
   actions: {
