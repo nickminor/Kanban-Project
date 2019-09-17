@@ -11,7 +11,6 @@
             <form>
               <div class="form-group">
                 <label for="title">Title</label>
-                <<<<<<< HEAD
                 <input
                   type="text"
                   class="form-control"
