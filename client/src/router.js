@@ -10,8 +10,8 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/lists/:listId',
-      name: 'list',
+      path: '/List',
+      name: 'List',
       component: List
     },
     {

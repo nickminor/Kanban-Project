@@ -107,17 +107,17 @@ export default new Vuex.Store({
 
     //#region -- LISTS --
 
-    async getlists({ commit, dispatch }, payload) {
+    async getLists({ commit, dispatch }, payload) {
       try {
-        let res = await api.get(`/boards/` + payload.listID + '/lists')
+        let res = await api.get(`/boards/` + payload.listID + '/Lists')
         commit("setLists", res.data)
       } catch (error) {
         console.error(error)
       }
     },
 
-    addList({ commit, dispatch }, listData) {
-      api.post('list', listData)
+    createList({ commit, dispatch }, listData) {
+      api.post(`/List/`, listData)
         .then(serverList => {
           dispatch('getLists')
         })

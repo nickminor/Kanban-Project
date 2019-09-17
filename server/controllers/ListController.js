@@ -22,7 +22,7 @@ export default class ListController {
     } catch (error) { next(error) }
   }
 
-  async create(req, res, next) {
+  async createList(req, res, next) {
     try {
       req.body.user = req.session.uid
       let data = await _ls.create(req.body)

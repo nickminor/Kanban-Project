@@ -29,13 +29,13 @@ export default {
     };
   },
   computed: {
-    user() {
-      return this.$store.state.activeUser;
+    board() {
+      return this.$store.state.activeBoard;
     }
   },
   methods: {
     addList() {
-      this.newList.userId = this.user._id;
+      this.newList.boardId = this.board._id;
       this.$store.dispatch("addList", this.newList);
       this.newList = {};
     }
