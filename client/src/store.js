@@ -117,7 +117,7 @@ export default new Vuex.Store({
     },
 
     createList({ commit, dispatch }, listData) {
-      api.post(`/List/`, listData)
+      api.post(`/List`, listData)
         .then(serverList => {
           dispatch('getLists')
         })

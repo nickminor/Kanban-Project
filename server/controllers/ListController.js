@@ -10,7 +10,7 @@ export default class ListController {
     this.router = express.Router()
       .use(Authorize.authenticated)
       .get('', this.getAll)
-      .post('', this.create)
+      .post('', this.createList)
       .put('/:id', this.edit)
       .delete('/id', this.delete)
   }
