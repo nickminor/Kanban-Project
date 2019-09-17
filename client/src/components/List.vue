@@ -1,12 +1,12 @@
 <template>
-<div class="list">
-  <h3>
-    {{listsProp.list}}
-<span> 
-  <button class="btn btn-danger" @click="deleteList">x</button>
-  </span>
-  </h3>
-    </div> 
+  <div class="list">
+    <h3>
+      {{listsProp.list}}
+      <span>
+        <button class="btn btn-danger" @click="deleteList">x</button>
+      </span>
+    </h3>
+  </div>
 </template>
 
 

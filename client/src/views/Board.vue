@@ -1,15 +1,20 @@
 <template>
-<div class="container-fluid"> 
-<div class="row">
-  <div class="col-12"> 
-  <div class="board">
-    {{board.title}}
-    <button @click="deleteBoard(boardId)" class="btn btn-danger">Delete</button>
-    <button @click="createList" type="submit" data-toggle="modal" data-target="#create-list-modal">Create List</button> 
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="board">
+          {{board.title}}
+          <button @click="deleteBoard(boardId)" class="btn btn-danger">Delete</button>
+          <button
+            @click="createList()"
+            type="submit"
+            data-toggle="modal"
+            data-target="#create-list-modal"
+          >Create List</button>
+        </div>
+      </div>
+    </div>
   </div>
-  </div> 
-  </div> 
-  </div> 
 </template>
 
 <script>

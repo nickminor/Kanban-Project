@@ -31,6 +31,6 @@ _schema.pre('findOneAndRemove', function (next) {
 //export default mongoose.model('List', _schema)
 export default class ListService {
   get repository() {
-    return mongoose.model('list', _schema)
+    return mongoose.model('List', _schema)
   }
 }
