@@ -43,8 +43,13 @@ export default new Vuex.Store({
     setLists(state, payload) {
       state.lists = payload
     },
+<<<<<<< HEAD
     setActiveBoard(state, payload) {
       state.activeBoard = payload
+=======
+    setauthorId(state, authorId) {
+      state.user._id = authorId
+>>>>>>> de984d42030f61c7b264ae79e8fd23dcb3a3440d
     }
 
   },
