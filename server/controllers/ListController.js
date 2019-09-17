@@ -1,5 +1,5 @@
-import express from 'express'
 import ListService from "../services/ListService"
+import express from 'express'
 import { Authorize } from "../middleware/authorize.js"
 
 let _ls = new ListService().repository
@@ -10,7 +10,7 @@ export default class ListController {
     this.router = express.Router()
       .use(Authorize.authenticated)
       .get('', this.getAll)
-      .post('', this.create)
+      .post('', this.createList)
       .put('/:id', this.edit)
       .delete('/id', this.delete)
   }
