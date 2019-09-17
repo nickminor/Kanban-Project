@@ -37,6 +37,7 @@ export default {
       this.$store.dispatch("deleteBoard", this.$route.params.boardId);
     },
     createList() {
+      debugger;
       this.$store.dispatch("createList", this.$route.params.boardId);
     }
   }

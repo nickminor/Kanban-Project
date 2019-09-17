@@ -19,6 +19,7 @@ export default {
   },
   computed: {
     postList() {
+      debugger;
       return this.$store.state.lists;
     }
   },
