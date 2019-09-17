@@ -1,5 +1,5 @@
-import express from 'express'
 import ListService from "../services/ListService"
+import express from 'express'
 import { Authorize } from "../middleware/authorize.js"
 
 let _ls = new ListService().repository
