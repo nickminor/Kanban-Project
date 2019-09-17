@@ -4,13 +4,8 @@
   <div class="col-12"> 
   <div class="board">
     {{board.title}}
-    <button id="delbtn" @click="deleteBoard(boardId)" class="btn btn-danger">Delete</button>
-    <button
-      @click="createList"
-      type="submit"
-      data-toggle="modal"
-      data-target="#create-list-modal"
-    >Create List</button>
+    <button @click="deleteBoard(boardId)" class="btn btn-danger">Delete</button>
+    <button @click="createList" type="submit" data-toggle="modal" data-target="#create-list-modal">Create List</button> 
   </div>
   </div> 
   </div> 
