@@ -43,8 +43,8 @@ export default new Vuex.Store({
     setLists(state, payload) {
       state.lists = payload
     },
-    setauthorId(state, user) {
-      state.user._id = user
+    setauthorId(state, authorId) {
+      state.user._id = authorId
     }
 
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <h3>
-      {{listsProp.list}}
+      {{lists.list}}
       <span>
         <button class="btn btn-danger" @click="deleteList">x</button>
       </span>
