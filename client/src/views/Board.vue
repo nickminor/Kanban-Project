@@ -5,19 +5,16 @@
         <div class="board">
           {{board.title}}
           <button @click="deleteBoard(boardId)" class="btn btn-danger">Delete</button>
-          <button
-            @click="createList()"
-            type="submit"
-            data-toggle="modal"
-            data-target="#create-list-modal"
-          >Create List</button>
+          <button type="button" data-toggle="modal" data-target="#create-list-modal">Create List</button>
         </div>
       </div>
     </div>
+    <CreateListModal />
   </div>
 </template>
 
 <script>
+import CreateListModal from "../components/CreateListModal";
 export default {
   name: "board",
   computed: {
@@ -31,13 +28,12 @@ export default {
     }
   },
   props: ["boardId"],
-
+  components: { CreateListModal },
   methods: {
     deleteBoard() {
       this.$store.dispatch("deleteBoard", this.$route.params.boardId);
     },
     createList() {
-      debugger;
       this.$store.dispatch("createList", this.$route.params.boardId);
     }
   }
