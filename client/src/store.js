@@ -116,14 +116,11 @@ export default new Vuex.Store({
       }
     },
 
-    async createList({ commit, dispatch }, listData) {
-      try {
-        let res = api.post(`/List/`, listData)
-        dispatch('getLists')
-        router.push({ name: 'lists/listId' })
-      } catch (error) {
-        console.error(error)
-      }
+    createList({ commit, dispatch }, listData) {
+      api.post(`/List`, listData)
+        .then(serverList => {
+          dispatch('getLists')
+        })
     },
 
     async deleteList({ commit, dispatch }, payload) {
