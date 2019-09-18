@@ -1,8 +1,10 @@
 import BoardService from '../services/BoardService'
 import express from 'express'
 import { Authorize } from '../middleware/authorize.js'
+import ListService from '../services/ListService'
 
 let _boardService = new BoardService().repository
+let _listService = new ListService().repository
 
 //PUBLIC
 export default class BoardsController {
@@ -11,7 +13,7 @@ export default class BoardsController {
       .use(Authorize.authenticated)
       .get('', this.getAll)
       .get('/:id', this.getById)
-      .get('/:id/lists', this.getAllLists)
+      .get('/:boardId/lists', this.getAllLists)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -36,7 +38,7 @@ export default class BoardsController {
   async getAllLists(req, res, next) {
     try {
       //only gets boards by user who is logged in
-      let data = await _boardService.find({ authorId: req.session.uid })
+      let data = await _listService.find({ boardId: req.params.boardId })
       return res.send(data)
     }
     catch (err) { next(err) }

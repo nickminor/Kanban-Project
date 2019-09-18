@@ -18,15 +18,6 @@
                   id="listTitle"
                   placeholder="List Title"
                 />
-                =======
-                <input
-                  type="text"
-                  class="form-control"
-                  id="listTitle"
-                  placeholder="List Title"
-                  v-model="newList.title"
-                />
-                >>>>>>> 8a4c793fb579a6632406fb15705761a9f4fa53f8
               </div>
               <button type="submit" @click="createList()" class="btn btn-primary">Submit</button>
             </form>

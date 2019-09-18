@@ -45,6 +45,9 @@ export default {
     },
     createList() {
       this.$store.dispatch("createList", this.$route.params.boardId);
+    },
+    deleteList() {
+      this.$store.dispatch("deleteList", this.$route.params.listId);
     }
   }
 };

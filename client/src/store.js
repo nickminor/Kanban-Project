@@ -142,8 +142,9 @@ export default new Vuex.Store({
 
     async deleteList({ commit, dispatch }, payload) {
       try {
-        let res = await api.delete(`/List/${payload}`)
-        dispatch('getList')
+        debugger
+        let res = await api.delete("/List/" + this.state.lists._id)
+        dispatch('getListsByBoardId', listData.boardId)
         router.push({ name: 'boards/boardId' })
       } catch (error) {
         console.error(error)
