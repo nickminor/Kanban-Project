@@ -9,7 +9,7 @@
         </div>
       </div>
     </div>
-    <Task v-for="task in tasks" :taskProp="task" :key="task._id" />
+    <Tasks v-for="task in tasks" :taskProp="task" :key="task._id" />
     <CreateTaskModal />
   </div>
 </template>
