@@ -175,10 +175,20 @@ export default new Vuex.Store({
       }
     },
 
-    async createTask({ commit, dispatch }, listData) {
+    async createTask({ commit, dispatch }, taskData) {
       try {
-        let res = await api.post('/tasks', listData)
-        dispatch('getTasksByListId', listData.listId)
+        let res = await api.post('/tasks', taskData)
+        dispatch('getTasksByListId', taskData.listId)
+      } catch (error) {
+        console.error(error)
+
+      }
+    },
+
+    async deleteTask({ commit, dispatch }, payload) {
+      try {
+        let res = await api.delete('/tasks/' + payload._id)
+        dispatch('getTasksbyListId', payload.listId)
       } catch (error) {
         console.error(error)
 

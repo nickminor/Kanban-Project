@@ -4,15 +4,21 @@ import Boards from './views/Boards.vue'
 import Board from './views/Board.vue'
 import Login from './views/Login.vue'
 import List from './components/List.vue'
+import Tasks from './components/Tasks.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/List',
-      name: 'List',
+      path: '/lists',
+      name: 'lists',
       component: List
+    },
+    {
+      path: '/tasks',
+      name: 'tasks',
+      component: Tasks
     },
     {
       path: '/',
