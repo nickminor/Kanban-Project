@@ -131,7 +131,7 @@ export default new Vuex.Store({
 
     async createList({ commit, dispatch }, listData) {
       try {
-        let res = await api.post('/List', listData)
+        let res = await api.post('/lists', listData)
         //.then(serverList => {
         dispatch('getListsByBoardId', listData.boardId)
       } catch (error) {
@@ -141,9 +141,8 @@ export default new Vuex.Store({
 
     async deleteList({ commit, dispatch }, payload) {
       try {
-        let res = await api.delete("/List/" + this.state.lists._id)
-        dispatch('getListsByBoardId', listData.boardId)
-        router.push({ name: 'boards/boardId' })
+        let res = await api.delete("/lists/" + payload._id)
+        dispatch('getListsByBoardId', payload.boardId)
       } catch (error) {
         console.error(error)
 

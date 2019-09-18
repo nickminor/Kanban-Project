@@ -12,7 +12,7 @@ export default class ListController {
       .get('', this.getAll)
       .post('', this.createList)
       .put('/:id', this.edit)
-      .delete('/id', this.deleteList)
+      .delete('/:id', this.deleteList)
   }
 
   async getAll(req, res, next) {
@@ -42,7 +42,7 @@ export default class ListController {
   }
   async deleteList(req, res, next) {
     try {
-      let data = await _ls.findOneAndRemove({ _id: req.params.id, user: req.session.uid })
+      let data = await _ls.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
       if (!data) {
         throw new Error('Invalid Id')
       }

@@ -1,16 +1,16 @@
 <template>
-<div class="container-fluid"> 
-  <div class="lists">
-    <div class="row">
-    <div class="col-3 border m-5 d-flex justify-content-around">
-    <h3>
-      {{listProp.title}}
-        <button class="btn btn-danger" @click="deleteList">x</button>
-    </h3>
+  <div class="container-fluid">
+    <div class="lists">
+      <div class="row">
+        <div class="col-3 border m-5 d-flex justify-content-around">
+          <h3>
+            {{listProp.title}}
+            <button class="btn btn-danger" @click="deleteList">x</button>
+          </h3>
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
-  </div>
-</div>
 </template>
 
 
@@ -33,12 +33,7 @@ export default {
   },
   methods: {
     deleteList() {
-      debugger;
-      this.$store.dispatch("deleteList", this.listId);
-    },
-    viewList() {
-      debugger;
-      this.$router.push({ name: "List", params: { listId: listsProp._id } });
+      this.$store.dispatch("deleteList", this.listProp);
     }
   },
   components: {}
