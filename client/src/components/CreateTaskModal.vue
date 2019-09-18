@@ -2,6 +2,7 @@
   <div class="taskModal">
     <div id="create-task-modal" class="modal" role="dialog">
       <div class="modal-dialog">
+        <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Create a Task</h4>
@@ -26,6 +27,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

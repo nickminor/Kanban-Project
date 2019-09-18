@@ -14,7 +14,6 @@
   </div>
 </template>
 
-
 <script>
 import CreateTaskModal from "../components/CreateTaskModal.vue";
 import Tasks from "../components/Tasks.vue";
