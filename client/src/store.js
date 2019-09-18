@@ -48,7 +48,13 @@ export default new Vuex.Store({
     },
     setActiveList(state, lists) {
       state.lists = lists
-    }
+    },
+    setActiveTask(state, tasks) {
+      state.tasks = tasks
+    },
+    setTasks(state, payload) {
+      state.tasks = payload
+    },
 
   },
   actions: {
@@ -154,10 +160,31 @@ export default new Vuex.Store({
       } catch (error) {
 
       }
-    }
-
-
+    },
 
     //#endregion
+
+    // #region -- Tasks --
+
+    async getTasksByListId({ commit, dispatch }, payload) {
+      try {
+        let res = await api.get(`/boards${payload}/lists/${payload}/tasks`)
+        commit("setTasks", res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    async createTask({ commit, dispatch }, listData) {
+      try {
+        let res = await api.post('/tasks', listData)
+        dispatch('getTasksByListId', listData.listId)
+      } catch (error) {
+        console.error(error)
+
+      }
+    }
   }
+
+
 })
