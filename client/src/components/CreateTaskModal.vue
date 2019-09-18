@@ -9,7 +9,7 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <lable for="description">description</lable>
+              <label for="description">description</label>
               <input
                 type="text"
                 class="form-control"

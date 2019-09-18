@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="tasks">
-      <div class="row"> 
-        <div class="col-3 border m-5"> 
+      <div class="row">
+        <div class="col-3 border m-5">
           <h5>
             {{taskProp.description}}
             <button class="btn btn-danger" @click="deleteTask">x</button>

@@ -3,14 +3,14 @@
     <div class="lists">
       <div class="row">
         <div class="col-3 border m-5 d-flex justify-content-around">
-            {{listProp.title}}
-            <button class="btn btn-danger" @click="deleteList">x</button>
+          {{listProp.title}}
+          <button class="btn btn-danger" @click="deleteList">x</button>
           <button type="button" data-toggle="modal" data-target="#create-task-modal">Create Task</button>
         </div>
       </div>
     </div>
     <Task v-for="task in tasks" :taskProp="task" :key="task._id" />
- <CreateTaskModal />
+    <CreateTaskModal />
   </div>
 </template>
 
@@ -29,18 +29,32 @@ export default {
       }
     };
   },
-  mounted() {},
+  mounted() {
+    this.$store.dispatch("getTasksByListId", this.$route.params.listId);
+  },
   computed: {
     postList() {
       return this.$store.state.lists;
+    },
+    tasks() {
+      return this.$store.state.tasks;
     }
   },
   methods: {
     deleteList() {
       this.$store.dispatch("deleteList", this.listProp);
+    },
+    createTask() {
+      this.$store.dispatch("createTask", this.$route.params.listId);
+    },
+    deleteTask() {
+      this.$store.dispatch("deleteTask", this.$route.params.taskId);
     }
   },
-  components: {}
+  components: {
+    CreateTaskModal,
+    Tasks
+  }
 };
 </script>
 
