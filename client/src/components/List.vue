@@ -30,14 +30,18 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("getTasksByListId", this.$route.params.listId);
+    let payload = {
+      boardId: this.$route.params.boardId,
+      listId: this.listProp._id
+    };
+    this.$store.dispatch("getTasksByListId", payload);
   },
   computed: {
     postList() {
       return this.$store.state.lists;
     },
     tasks() {
-      return this.$store.state.tasks;
+      return this.$store.state.tasks[this.listProp._id] || [];
     }
   },
   methods: {

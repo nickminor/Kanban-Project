@@ -2,9 +2,12 @@ import BoardService from '../services/BoardService'
 import express from 'express'
 import { Authorize } from '../middleware/authorize.js'
 import ListService from '../services/ListService'
+import TaskService from '../services/TaskService'
+
 
 let _boardService = new BoardService().repository
 let _listService = new ListService().repository
+let _taskService = new TaskService().repository
 
 //PUBLIC
 export default class BoardsController {
@@ -14,6 +17,7 @@ export default class BoardsController {
       .get('', this.getAll)
       .get('/:id', this.getById)
       .get('/:boardId/lists', this.getAllLists)
+      .get('/:boardId/lists/:listId/tasks', this.getTasks)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -43,6 +47,15 @@ export default class BoardsController {
     }
     catch (err) { next(err) }
   }
+  async getTasks(req, res, next) {
+    try {
+      //only gets boards by user who is logged in
+      let data = await _taskService.find({ listId: req.params.listId })
+      return res.send(data)
+    }
+    catch (err) { next(err) }
+  }
+
 
   async getById(req, res, next) {
     try {
