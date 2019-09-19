@@ -1,14 +1,22 @@
 <template>
   <div class="tasks">
-    <h5>
-      {{taskProp.description}}
-      <button class="btn btn-danger" @click="deleteTask()">x</button>
-    </h5>
+    <h5>{{taskProp.description}}</h5>
+    <button class="btn btn-danger" @click="deleteTask()">x</button>
+    <button
+      type="button"
+      data-toggle="modal"
+      :data-target="'#create-comment-modal' + taskProp._id"
+    >Create Comment</button>
+    <Comments v-for="comment in comments" :commentProp="comment" :key="comment._id" />
+    <CreateCommentModal :taskProp="taskProp" />
   </div>
 </template>
 
 
 <script>
+import CreateCommentModal from "../components/CreateCommentModal.vue";
+import Comments from "../components/Comments.vue";
+
 export default {
   name: "tasks",
   props: ["taskProp"],
@@ -30,7 +38,10 @@ export default {
       this.$store.dispatch("deleteTask", this.taskProp);
     }
   },
-  components: {}
+  components: {
+    CreateCommentModal,
+    Comment
+  }
 };
 </script>
 

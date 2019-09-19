@@ -25,7 +25,7 @@ export default new Router({
       path: '/comments',
       name: 'comments',
       component: Comments
-    }
+    },
     {
       path: '/',
       name: 'boards',

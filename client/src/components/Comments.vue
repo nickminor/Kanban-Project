@@ -29,10 +29,7 @@ export default {
       this.$store.dispatch("deleteComment", this.commentProp);
     }
   },
-  components: {
-    CreateCommentModal,
-    Comment
-  }
+  components: {}
 };
 </script>
 
