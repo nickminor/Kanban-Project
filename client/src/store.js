@@ -194,6 +194,11 @@ export default new Vuex.Store({
       }
     },
 
+    async moveTask({ commit, dispatch }, payload) {
+      //send put request to server to "tasks/"+payload.taskId with the object {listId: payload.newListId}
+      //dispatch 'getTasks', payload.oldListId && dispatch 'getTasks' for payload.newListId
+    },
+
     async deleteTask({ commit, dispatch }, payload) {
       try {
         let res = await api.delete('/tasks/' + payload._id)
