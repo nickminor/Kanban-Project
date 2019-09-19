@@ -2,7 +2,7 @@
   <div class="comments">
     <h4>
       {{commentProp.content}}
-      <button class="btn btn-danger" @click="deletecomment()">x</button>
+      <button class="btn btn-danger" @click="deleteComment()">x</button>
     </h4>
   </div>
 </template>

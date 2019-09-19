@@ -42,7 +42,7 @@ export default class CommentController {
     }
     async deleteComment(req, res, next) {
         try {
-            let data = await _cs.findOneAndRemove({ _id: req.params.id, authorId: req.session.uid })
+            let data = await _cs.findOneAndRemove({ _id: req.params.id })
             if (!data) {
                 throw new Error('Invalid Id')
             }

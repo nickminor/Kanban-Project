@@ -27,7 +27,14 @@ export default {
       }
     };
   },
-  mounted() {},
+  mounted() {
+    let payload = {
+      boardId: this.$route.params.boardId,
+      listId: this.taskProp.listId,
+      taskId: this.taskProp._id
+    };
+    this.$store.dispatch("getCommentsByTaskId", payload);
+  },
   computed: {
     postTask() {
       return this.$store.state.tasks;
@@ -42,6 +49,9 @@ export default {
     },
     createComment() {
       this.$store.dispatch("createComment", this.taskProp);
+    },
+    deleteComment() {
+      this.$store.dispatch("deleteComment", this.$route.params.commentId);
     }
   },
   components: {
