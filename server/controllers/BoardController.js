@@ -3,11 +3,13 @@ import express from 'express'
 import { Authorize } from '../middleware/authorize.js'
 import ListService from '../services/ListService'
 import TaskService from '../services/TaskService'
+import CommentService from '../services/CommentService'
 
 
 let _boardService = new BoardService().repository
 let _listService = new ListService().repository
 let _taskService = new TaskService().repository
+let _commentService = new CommentService().repository
 
 //PUBLIC
 export default class BoardsController {
@@ -18,6 +20,7 @@ export default class BoardsController {
       .get('/:id', this.getById)
       .get('/:boardId/lists', this.getAllLists)
       .get('/:boardId/lists/:listId/tasks', this.getTasks)
+      .get('/:boardId/lists/:listId/tasks/:taskId/comments', this.getComments)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -55,7 +58,14 @@ export default class BoardsController {
     }
     catch (err) { next(err) }
   }
-
+  async getComments(req, res, next) {
+    try {
+      //only gets boards by user who is logged in
+      let data = await _commentService.find({ taskId: req.params.taskId })
+      return res.send(data)
+    }
+    catch (err) { next(err) }
+  }
 
   async getById(req, res, next) {
     try {

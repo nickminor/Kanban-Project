@@ -172,7 +172,6 @@ export default new Vuex.Store({
 
     async getTasksByListId({ commit, dispatch }, payload) {
       try {
-        debugger
         let res = await api.get(`/boards/${payload.boardId}/lists/${payload.listId}/tasks`)
         let data = {
           boardId: payload.boardId,
@@ -207,20 +206,20 @@ export default new Vuex.Store({
 
     async getCommentsByTaskId({ commit, dispatch }, payload) {
       try {
-        debugger
-        let res = await api.get(`/boards/${payload.boardId}/lists/${payload.listId}/tasks/${payload.taskId}/comments/`)
+        let res = await api.get(`/boards/${payload.boardId}/lists/${payload.listId}/tasks/${payload.taskId}/comments`)
         let data = {
           boardId: payload.boardId,
           listId: payload.listId,
-          tasks: res.data
+          taskId: payload.taskId,
+          comments: res.data
         }
-        commit("setTasks", data)
+        commit("setComments", data)
       } catch (error) {
         console.error(error)
       }
     },
 
-    async createComments({ commit, dispatch }, payload) {
+    async createComment({ commit, dispatch }, payload) {
       try {
         let res = await api.post('/comments', payload)
         dispatch('getCommentsByTaskId', payload)

@@ -31,16 +31,22 @@ export default {
   computed: {
     postTask() {
       return this.$store.state.tasks;
+    },
+    comments() {
+      return this.$store.state.comments[this.taskProp._id] || [];
     }
   },
   methods: {
     deleteTask() {
       this.$store.dispatch("deleteTask", this.taskProp);
+    },
+    createComment() {
+      this.$store.dispatch("createComment", this.taskProp);
     }
   },
   components: {
     CreateCommentModal,
-    Comment
+    Comments
   }
 };
 </script>

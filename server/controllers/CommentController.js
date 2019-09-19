@@ -1,6 +1,7 @@
 import TaskService from "../services/TaskService"
 import express from 'express'
 import { Authorize } from "../middleware/authorize.js"
+import CommentService from "../services/CommentService"
 
 let _cs = new CommentService().repository
 
@@ -48,3 +49,4 @@ export default class CommentController {
             res.send('task deleted')
         } catch (error) { next(error) }
     }
+}
