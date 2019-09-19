@@ -2,7 +2,7 @@
   <div class="tasks">
     <h5>
       {{taskProp.description}}
-      <button class="btn btn-danger" @click="deleteTask">x</button>
+      <button class="btn btn-danger" @click="deleteTask()">x</button>
     </h5>
   </div>
 </template>

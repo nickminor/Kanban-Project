@@ -167,6 +167,7 @@ export default new Vuex.Store({
 
     async getTasksByListId({ commit, dispatch }, payload) {
       try {
+        debugger
         let res = await api.get(`/boards/${payload.boardId}/lists/${payload.listId}/tasks`)
         let data = {
           boardId: payload.boardId,
@@ -192,7 +193,7 @@ export default new Vuex.Store({
     async deleteTask({ commit, dispatch }, payload) {
       try {
         let res = await api.delete('/tasks/' + payload._id)
-        dispatch('getTasksbyListId', payload.listId)
+        dispatch('getTasksByListId', payload)
       } catch (error) {
         console.error(error)
 
