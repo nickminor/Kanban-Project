@@ -28,7 +28,9 @@ export default new Vuex.Store({
       listId: []
     },
     activeTask: {},
-    comments: [],
+    comments: {
+      taskId: []
+    },
     activeComment: {},
 
   },
@@ -54,6 +56,9 @@ export default new Vuex.Store({
     setTasks(state, payload) {
       Vue.set(state.tasks, payload.listId, payload.tasks)
     },
+    setComments(state, payload) {
+      Vue.set(state.comments, payload.taskId, payload.comments)
+    }
 
   },
   actions: {
@@ -198,7 +203,42 @@ export default new Vuex.Store({
         console.error(error)
 
       }
-    }
+    },
+
+    async getCommentsByTaskId({ commit, dispatch }, payload) {
+      try {
+        debugger
+        let res = await api.get(`/boards/${payload.boardId}/lists/${payload.listId}/tasks/${payload.taskId}/comments/`)
+        let data = {
+          boardId: payload.boardId,
+          listId: payload.listId,
+          tasks: res.data
+        }
+        commit("setTasks", data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    async createComments({ commit, dispatch }, payload) {
+      try {
+        let res = await api.post('/comments', payload)
+        dispatch('getCommentsByTaskId', payload)
+      } catch (error) {
+        console.error(error)
+
+      }
+    },
+
+    async deleteComment({ commit, dispatch }, payload) {
+      try {
+        let res = await api.delete('/comments/' + payload._id)
+        dispatch('getCommentsByTaskId', payload)
+      } catch (error) {
+        console.error(error)
+
+      }
+    },
   }
 
 

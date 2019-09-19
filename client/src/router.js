@@ -5,6 +5,7 @@ import Board from './views/Board.vue'
 import Login from './views/Login.vue'
 import List from './components/List.vue'
 import Tasks from './components/Tasks.vue'
+import Comments from './components/Comments.vue'
 
 Vue.use(Router)
 
@@ -20,6 +21,11 @@ export default new Router({
       name: 'tasks',
       component: Tasks
     },
+    {
+      path: '/comments',
+      name: 'comments',
+      component: Comments
+    }
     {
       path: '/',
       name: 'boards',
