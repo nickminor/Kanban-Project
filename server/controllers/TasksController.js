@@ -32,7 +32,7 @@ export default class TaskController {
     }
     async moveTask(req, res, next) {
         try {
-            let data = await _ts.findOneAndUpdate({ _id: req.params.id, user: req.session.uid }, req.body, { new: true })
+            let data = await _ts.put({ _id: req.params.id, user: req.session.uid }, req.body, { new: true })
             if (data) {
                 return res.send(data)
             }
