@@ -195,6 +195,15 @@ export default new Vuex.Store({
     },
 
     async moveTask({ commit, dispatch }, payload) {
+      try {
+        debugger
+        let res = await api.put(`/tasks/${payload.currentTaskId}`, payload.newListId)
+        dispatch('getTasksByListId', payload.oldListId)
+        dispatch('getTasksByListId', payload.newListId)
+
+      } catch (error) {
+
+      }
       //send put request to server to "tasks/"+payload.taskId with the object {listId: payload.newListId}
       //dispatch 'getTasks', payload.oldListId && dispatch 'getTasks' for payload.newListId
     },

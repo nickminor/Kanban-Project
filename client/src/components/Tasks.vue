@@ -64,12 +64,11 @@ export default {
     },
     moveTask() {
       let taskData = {
-        newListId: this.taskProp.
-      }
-      this.$store.dispatch("moveTask", this.$route.params.taskId)
-
-
-
+        newListId: this.selected,
+        oldListId: this.taskProp.listId,
+        currentTaskId: this.taskProp._id
+      };
+      this.$store.dispatch("moveTask", taskData);
 
       //put request on the Task
       //create an object that includes the newList Id :: this.selected

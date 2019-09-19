@@ -11,7 +11,7 @@ export default class TaskController {
             .use(Authorize.authenticated)
             .get('', this.getAll)
             .post('', this.createTask)
-            .put('/:id', this.edit)
+            .put('/:id', this.moveTask)
             .delete('/:id', this.deleteTask)
     }
     async getAll(req, res, next) {
@@ -30,7 +30,7 @@ export default class TaskController {
             next(error)
         }
     }
-    async edit(req, res, next) {
+    async moveTask(req, res, next) {
         try {
             let data = await _ts.findOneAndUpdate({ _id: req.params.id, user: req.session.uid }, req.body, { new: true })
             if (data) {
