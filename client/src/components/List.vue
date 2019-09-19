@@ -5,11 +5,16 @@
         <div class="col-3 border m-5 d-flex justify-content-around">
           {{listProp.title}}
           <button class="btn btn-danger" @click="deleteList">x</button>
-          <button type="button" data-toggle="modal" data-target="#create-task-modal">Create Task</button>
+          <button
+            type="button"
+            data-toggle="modal"
+            :data-target="'#create-task-modal' + listProp._id"
+          >Create Task</button>
+          <br />
+          <Tasks v-for="task in tasks" :taskProp="task" :key="task._id" />
+          <CreateTaskModal :listProp="listProp" />
         </div>
       </div>
-      <Tasks v-for="task in tasks" :taskProp="task" :key="task._id" />
-      <CreateTaskModal :listProp="listProp" />
     </div>
   </div>
 </template>

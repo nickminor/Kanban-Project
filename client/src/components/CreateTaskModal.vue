@@ -1,6 +1,6 @@
 <template>
   <div class="taskModal">
-    <div id="create-task-modal" class="modal" role="dialog">
+    <div :id="'create-task-modal' + listProp._id" class="modal" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">

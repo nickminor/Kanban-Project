@@ -24,7 +24,9 @@ export default new Vuex.Store({
     activeBoard: {},
     lists: [],
     activeList: {},
-    tasks: {},
+    tasks: {
+      listId: []
+    },
     activeTask: {},
     comments: [],
     activeComment: {},
