@@ -167,6 +167,7 @@ export default new Vuex.Store({
       try {
         let res = await api.get(`/boards/${payload.boardId}/lists/${payload.listId}/tasks`)
         let data = {
+          boardId: payload.boardId,
           listId: payload.listId,
           tasks: res.data
         }

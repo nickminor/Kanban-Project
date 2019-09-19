@@ -8,9 +8,9 @@
           <button type="button" data-toggle="modal" data-target="#create-task-modal">Create Task</button>
         </div>
       </div>
+      <Tasks v-for="task in tasks" :taskProp="task" :key="task._id" />
+      <CreateTaskModal :listProp="listProp" />
     </div>
-    <Tasks v-for="task in tasks" :taskProp="task" :key="task._id" />
-    <CreateTaskModal />
   </div>
 </template>
 

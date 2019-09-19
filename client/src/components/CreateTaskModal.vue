@@ -35,6 +35,7 @@
 <script>
 export default {
   name: "Create-Task-Modal",
+  props: ["listProp"],
   data() {
     return {
       newTask: {}
@@ -47,8 +48,13 @@ export default {
   },
   methods: {
     createTask() {
-      this.newTask.listId = this.$route.params.listId;
-      this.$store.dispatch("createTask", this.newTask);
+      let taskData = {
+        listId: this.listProp._id,
+        boardId: this.listProp.boardId,
+        description: this.newTask.description
+      };
+      //this.newTask.listId = this.$route.params.listId;
+      this.$store.dispatch("createTask", taskData);
       this.newTask = {};
     }
   },
