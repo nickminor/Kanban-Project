@@ -1,6 +1,11 @@
 <template>
   <div class="tasks">
     <h5>{{taskProp.description}}</h5>
+
+    <select @change="moveTask()" v-model="selected">
+      <option v-for="list in lists" :value="list._id" :key="list._id">{{ list.title }}</option>
+    </select>
+
     <button class="btn btn-danger" @click="deleteTask()">x</button>
     <button
       type="button"
@@ -22,6 +27,7 @@ export default {
   props: ["taskProp"],
   data() {
     return {
+      selected: "",
       newTask: {
         description: ""
       }
@@ -41,6 +47,9 @@ export default {
     },
     comments() {
       return this.$store.state.comments[this.taskProp._id] || [];
+    },
+    lists() {
+      return this.$store.state.lists;
     }
   },
   methods: {
@@ -52,6 +61,21 @@ export default {
     },
     deleteComment() {
       this.$store.dispatch("deleteComment", this.$route.params.commentId);
+    },
+    moveTask() {
+      let taskData = {
+        newListId: this.taskProp.
+      }
+      this.$store.dispatch("moveTask", this.$route.params.taskId)
+
+
+
+
+      //put request on the Task
+      //create an object that includes the newList Id :: this.selected
+      //old list id :: this.taskProp.listId
+      //current task Id :: this.taskProp._id
+      //fire off dispatch to store with above data in a single object
     }
   },
   components: {
