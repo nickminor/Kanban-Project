@@ -1,22 +1,8 @@
 <template>
   <div class="container-fluid">
-<<<<<<< HEAD
-    <div class="lists border">
-      {{listProp.title}}
-      <button class="btn btn-danger" @click="deleteList">x</button>
-      <div class="col-3 m-5 d-flex justify-content">
-        <button
-          type="button"
-          data-toggle="modal"
-          :data-target="'#create-task-modal' + listProp._id"
-        >Create Task</button>
-        <CreateTaskModal :listProp="listProp" />
-        <br />
-        <Tasks v-for="task in tasks" :taskProp="task" :key="task._id" />
-=======
     <div class="lists">
       <div class="row">
-        <div class="col-3 border m-5 justify-content-around">
+        <div class="col-12 border m-5 justify-content-around">
           {{listProp.title}}
           <button class="btn btn-danger" @click="deleteList">x</button>
           <button
@@ -28,7 +14,6 @@
           <Tasks v-for="task in tasks" :taskProp="task" :key="task._id" />
           <CreateTaskModal :listProp="listProp" />
         </div>
->>>>>>> 7f47a4049f963746b13f7deff936bd50328e3c54
       </div>
     </div>
   </div>
