@@ -88,4 +88,7 @@ export default {
 
 
 <style scoped>
+.tasks {
+  background-color: #88d498;
+}
 </style>

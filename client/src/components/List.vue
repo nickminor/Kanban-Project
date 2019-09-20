@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="lists">
       <div class="row">
-        <div class="col-12 border m-5 justify-content-around">
+        <div class="col-12 border m-auto">
           {{listProp.title}}
           <button class="btn btn-danger" @click="deleteList">X</button>
           <button
@@ -70,4 +70,8 @@ export default {
 
 
 <style scoped>
+.lists {
+  background-color: #1a936f;
+  color: #f3e9d2;
+}
 </style>

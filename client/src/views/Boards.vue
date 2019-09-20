@@ -1,28 +1,30 @@
 <template>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12"> 
-  <div class="boards">
-    WELCOME TO THE BOARDS!!!
-    <button @click="logout" class="btn btn-danger">Log Out</button>
-    <form @submit.prevent="addBoard">
-      <input type="text" placeholder="title" v-model="newBoard.title" required />
-      <input type="text" placeholder="description" v-model="newBoard.description" />
-      <button type="submit">Create Board</button>
-    </form>
-    <div class="row" id="board">
-    <div class="col-3 border m-5" v-for="board in boards" :key="board._id">
-      <router-link :to="{name: 'board', params: {boardId: board._id}}">
-        {{board.title}}
-        <br><br>
-        {{board.description}}
-      </router-link>
-      <br><br>
-      <button @click="deleteBoard(board._id)" class="btn btn-danger">Delete</button>
-  </div>
-  </div>
-  </div>
-  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="boards">
+          WELCOME TO THE BOARDS!!!
+          <button @click="logout" class="btn btn-danger">Log Out</button>
+          <form @submit.prevent="addBoard">
+            <input type="text" placeholder="title" v-model="newBoard.title" required />
+            <input type="text" placeholder="description" v-model="newBoard.description" />
+            <button type="submit">Create Board</button>
+          </form>
+          <div class="row" id="board">
+            <div class="col-3 border m-5" v-for="board in boards" :key="board._id">
+              <router-link :to="{name: 'board', params: {boardId: board._id}}">
+                {{board.title}}
+                <br />
+                <br />
+                {{board.description}}
+              </router-link>
+              <br />
+              <br />
+              <button @click="deleteBoard(board._id)" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -64,16 +66,15 @@ export default {
 
 <style>
 .container-fluid {
-  background-color: aquamarine;
+  background-color: rgb(177, 218, 177);
   background-size: cover;
-  background-size: 100vh;
 }
 .col-3 {
-  background-color: blueviolet;
+  background-color: #114b5f;
   color: white;
   font-size: 20px;
 }
-.a {
+a {
   color: white;
 }
 #board {

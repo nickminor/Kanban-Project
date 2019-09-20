@@ -57,3 +57,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+.container-fluid {
+  background-color: rgb(177, 218, 177);
+  background-size: auto;
+}
+</style>
