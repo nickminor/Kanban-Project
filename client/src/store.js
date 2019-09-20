@@ -183,6 +183,16 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async getTasksById({ commit, dispatch }, payload) {
+      try {
+        debugger
+        let res = await api.get(`/tasks/${payload.currentTaskId}`)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+
 
     async createTask({ commit, dispatch }, payload) {
       try {

@@ -63,5 +63,8 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
+.tasks {
+  background-color: rgb(16, 137, 173);
+}
 </style>

@@ -68,6 +68,7 @@ export default {
         oldListId: this.taskProp.listId,
         currentTaskId: this.taskProp._id
       };
+      debugger;
       this.$store.dispatch("moveTask", taskData);
 
       //put request on the Task

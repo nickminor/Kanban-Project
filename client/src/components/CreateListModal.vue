@@ -29,7 +29,6 @@
       </div>
     </div>
   </div>
-
     
       
     
@@ -63,4 +62,8 @@ export default {
 
 
 <style scoped>
+.listModal {
+  color: white;
+  background-color: blue;
+}
 </style>
