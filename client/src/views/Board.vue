@@ -9,8 +9,13 @@
         </div>
       </div>
     </div>
-    <List v-for="list in lists" :listProp="list" :key="list._id" />
-    <CreateListModal />
+    <br />
+    <div class="container-fluid">
+      <div class="col-4 d-flex">
+        <List v-for="list in lists" :listProp="list" :key="list._id" />
+        <CreateListModal />
+      </div>
+    </div>
   </div>
 </template>
 
