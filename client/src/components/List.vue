@@ -56,6 +56,9 @@ export default {
     },
     deleteTask() {
       this.$store.dispatch("deleteTask", this.$route.params.taskId);
+    },
+    moveTask() {
+      this.$store.dispatch("moveTask", this.$route.params.taskId);
     }
   },
   components: {

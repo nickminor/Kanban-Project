@@ -2,7 +2,7 @@
   <div class="tasks">
     <h5>{{taskProp.description}}</h5>
 
-    <select @change="moveTask()" v-model="selected">
+    <select @change="moveTask()" v-model="newListId">
       <option v-for="list in lists" :value="list._id" :key="list._id">{{ list.title }}</option>
     </select>
 
@@ -27,7 +27,7 @@ export default {
   props: ["taskProp"],
   data() {
     return {
-      selected: "",
+      newListId: "",
       newTask: {
         description: ""
       }
@@ -64,11 +64,11 @@ export default {
     },
     moveTask() {
       let taskData = {
-        newListId: this.selected,
+        boardId: this.taskProp.boardId,
+        listId: this.newListId,
         oldListId: this.taskProp.listId,
         currentTaskId: this.taskProp._id
       };
-      debugger;
       this.$store.dispatch("moveTask", taskData);
 
       //put request on the Task
@@ -76,7 +76,7 @@ export default {
       //old list id :: this.taskProp.listId
       //current task Id :: this.taskProp._id
       //fire off dispatch to store with above data in a single object
-      //not sure what changed during git commit 
+      //not sure what changed during git commit
     }
   },
   components: {
