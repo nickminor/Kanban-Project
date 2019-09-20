@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-12 border m-5 justify-content-around">
           {{listProp.title}}
-          <button class="btn btn-danger" @click="deleteList">x</button>
+          <button class="btn btn-danger" @click="deleteList">X</button>
           <button
             type="button"
             data-toggle="modal"
