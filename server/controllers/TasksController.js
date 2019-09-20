@@ -10,6 +10,7 @@ export default class TaskController {
         this.router = express.Router()
             .use(Authorize.authenticated)
             .get('', this.getAll)
+            .get('/:id', this.getById)
             .post('', this.createTask)
             .put('/:id', this.moveTask)
             .delete('/:id', this.deleteTask)
@@ -19,6 +20,15 @@ export default class TaskController {
             let data = await _ts.find({})
             return res.send(data)
         } catch (error) { next(error) }
+    }
+    async getById(req, res, next) {
+        try {
+            let data = await _ts.find({ _id: req.params.id, })
+            return res.send(data)
+        } catch (error) {
+            next(error)
+
+        }
     }
 
     async createTask(req, res, next) {
@@ -32,7 +42,7 @@ export default class TaskController {
     }
     async moveTask(req, res, next) {
         try {
-            let data = await _ts.put({ _id: req.params.id, user: req.session.uid }, req.body, { new: true })
+            let data = await _ts.findOneAndUpdate({ _id: req.params.id, user: req.session.uid }, req.body, { new: true })
             if (data) {
                 return res.send(data)
             }

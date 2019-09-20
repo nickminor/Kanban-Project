@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="lists">
       <div class="row">
-        <div class="col-3 border m-5 d-flex justify-content-around">
+        <div class="col-3 border m-5 justify-content-around">
           {{listProp.title}}
           <button class="btn btn-danger" @click="deleteList">x</button>
           <button
@@ -18,7 +18,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import CreateTaskModal from "../components/CreateTaskModal.vue";
 import Tasks from "../components/Tasks.vue";
