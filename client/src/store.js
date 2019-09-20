@@ -205,11 +205,8 @@ export default new Vuex.Store({
 
     async moveTask({ commit, dispatch }, payload) {
       try {
-        debugger
         let res = await api.put(`/tasks/${payload.currentTaskId}`, payload)
         dispatch('getTasksByListId', payload)
-        dispatch('getTasksByListId', payload.listId)
-
       } catch (error) {
 
       }
