@@ -207,6 +207,7 @@ export default new Vuex.Store({
       try {
         let res = await api.put(`/tasks/${payload.currentTaskId}`, payload)
         dispatch('getTasksByListId', payload)
+        dispatch('getTasksByListId', { listId: payload.oldListId, boardId: payload.boardId })
       } catch (error) {
 
       }
