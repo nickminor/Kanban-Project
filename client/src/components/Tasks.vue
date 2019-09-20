@@ -76,6 +76,7 @@ export default {
       //old list id :: this.taskProp.listId
       //current task Id :: this.taskProp._id
       //fire off dispatch to store with above data in a single object
+      //not sure what changed during git commit 
     }
   },
   components: {
