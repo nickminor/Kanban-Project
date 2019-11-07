@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="lists">
-      <div class="row">
+      <div class="row m-3" id="list-card">
         <div class="col-12 border m-auto">
           {{listProp.title}}
           <button class="btn btn-danger" @click="deleteList">X</button>
